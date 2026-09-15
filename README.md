@@ -1,26 +1,12 @@
-# Contas Casal
+# Contas Casal v1.1
 
-Projeto React + Vite + Supabase para Leonardo e Rebeca.
+Agora aceita o `.xls` original do Itaú, `.xlsx` e o CSV consolidado.
 
-## GitHub Pages
-1. Envie o conteúdo desta pasta para a raiz de `Sakaguchi-Leo/contas-casal`.
-2. Em Settings > Secrets and variables > Actions, crie:
-   - `VITE_SUPABASE_URL` = `https://zrrvnyzassxbqpfwbihx.supabase.co`
-   - `VITE_SUPABASE_PUBLISHABLE_KEY` = sua chave publicável atual.
-3. Em Settings > Pages, selecione `GitHub Actions`.
-4. Faça push na branch `main` e acompanhe Actions.
-5. A URL será `https://sakaguchi-leo.github.io/contas-casal/`.
+## Antes de publicar
+No Supabase SQL Editor, execute `supabase/migrations/002_importacao_itau.sql`.
 
-## Supabase Auth
-Em Authentication > URL Configuration:
-- Site URL: `https://sakaguchi-leo.github.io/contas-casal/`
-- Redirect URL: `https://sakaguchi-leo.github.io/contas-casal/**`
+## Publicar
+Substitua os arquivos na raiz do repositório e faça commit na `main`. O GitHub Actions fará o deploy.
 
-## Desenvolvimento local
-```bash
-cp .env.example .env.local
-npm install
-npm run dev
-```
-
-Nunca publique `.env.local` nem use `service_role` no frontend.
+## Importação
+A tela mostra prévia antes de gravar. Linhas de saldo são ignoradas. Cofrinhos e transferências próprias são marcados como neutros e não entram nos totais. A gravação ocorre em lotes de 200 e duplicidades são ignoradas pelo `import_hash`.
